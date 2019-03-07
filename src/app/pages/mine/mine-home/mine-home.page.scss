@@ -1,0 +1,29 @@
+ion-toolbar {
+  --border-color: transparent;
+}
+
+ion-content {
+  --ion-background-color: #f5f5f5;
+}
+
+ion-item {
+  --ion-background-color: #fff;
+}
+.mine-header{
+  padding-bottom: 8px;
+  background: #fff;
+  ion-thumbnail{
+    img{
+      border-radius: 4px;
+    }
+  }
+  ion-label{
+    h2{
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+  }
+  ion-icon{
+    font-size: 20px;
+  }
+}

@@ -1,0 +1,41 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button></ion-back-button>
+        </ion-buttons>
+        <ion-title>个人资料</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+    <ion-list margin-vertical>
+        <ion-item detail tappable (click)="updateAvatar()">
+            <ion-label>头像</ion-label>
+            <img src="./assets/avatar/default.png" class="avatar" alt="头像">
+        </ion-item>
+        <ion-item detail tappable (click)="updateRealName()">
+            <ion-label>姓名</ion-label>
+            <ion-note>{{user.realName}}</ion-note>
+        </ion-item>
+        <ion-item detail tappable (click)="updateSex()">
+            <ion-label>性别</ion-label>
+            <ion-note>{{user.sex==1?'男':(user.sex==2?'女':'')}}</ion-note>
+        </ion-item>
+        <ion-item>
+            <ion-label>登录帐号</ion-label>
+            <ion-note>{{user.username}}</ion-note>
+        </ion-item>
+    </ion-list>
+    <ion-button (click)="router()">router</ion-button>
+    <ion-list margin-vertical>
+        <ion-item detail tappable routerLink="/tabs/mine/qr-code">
+            <ion-label>我的二维码</ion-label>
+            <ion-icon src="./assets/icon/QR-code.svg" slot="end" class="qr-code"></ion-icon>
+        </ion-item>
+        <ion-item detail tappable>
+            <ion-label>我的收货地址</ion-label>
+        </ion-item>
+    </ion-list>
+
+</ion-content>

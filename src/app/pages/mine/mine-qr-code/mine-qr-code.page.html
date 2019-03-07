@@ -1,0 +1,20 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button></ion-back-button>
+        </ion-buttons>
+        <ion-title>我的二维码</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content text-center>
+    <div class="code-wrap"><img [src]="qrCodeUrl" alt=""></div>
+    <ion-button color="secondary" margin-horizontal (click)="save()" [disabled]="loading">
+        <ion-icon slot="start" name="download"></ion-icon>
+        保存到手机
+    </ion-button>
+    <ion-button color="primary" margin-horizontal (click)="share()" [disabled]="loading">
+        <ion-icon slot="start" name="share-alt"></ion-icon>
+        分享二维码
+    </ion-button>
+</ion-content>

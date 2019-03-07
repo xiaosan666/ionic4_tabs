@@ -1,0 +1,44 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>登 录</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+    <div text-center margin>
+        <img src="./assets/icon/favicon.png" alt="">
+    </div>
+    <form (ngSubmit)="formSubmit()" #ngForm="ngForm" class="myForm">
+        <ion-list lines="full">
+            <ion-item>
+                <ion-label>用户名</ion-label>
+                <ion-input type="text" name="username" placeholder="请输入用户名" [(ngModel)]="model.username"
+                           #username="ngModel"
+                           required pattern="[A-Za-z0-9]{4,20}" autocomplete="off"></ion-input>
+            </ion-item>
+            <div *ngIf="username.invalid && username.dirty" class="form-invalid-tip">
+                <div *ngIf="username.errors.required">用户名是必填项</div>
+                <div *ngIf="username.errors.pattern">用户名只能是4到20位长度的英文或数字</div>
+            </div>
+            <ion-item>
+                <ion-label>密码</ion-label>
+                <ion-input type="password" name="password" placeholder="请输入密码"
+                           [(ngModel)]="model.password"
+                           #password="ngModel" required pattern=".{6,20}" autocomplete="off"></ion-input>
+            </ion-item>
+            <div *ngIf="password.invalid && password.dirty" class="form-invalid-tip">
+                <div *ngIf="password.errors.required">密码是必填项</div>
+                <div *ngIf="password.errors.pattern">密码长度为6到20位</div>
+            </div>
+        </ion-list>
+        <ion-button expand="block" type="submit" [disabled]="!ngForm.valid||loading">登 录</ion-button>
+        <ion-row text-center>
+            <ion-col>
+                <ion-button fill="clear" size="small" color="dark">找回密码？</ion-button>
+            </ion-col>
+            <ion-col>
+                <ion-button fill="clear" size="small" color="dark">注册新用户</ion-button>
+            </ion-col>
+        </ion-row>
+    </form>
+</ion-content>

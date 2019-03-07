@@ -1,0 +1,213 @@
+// Ionic Variables and Theming. For more info, please see:
+// http://ionicframework.com/docs/theming/
+
+/** Ionic CSS Variables **/
+:root {
+  /** primary **/
+  --ion-color-primary: #3880ff;
+  --ion-color-primary-rgb: 56, 128, 255;
+  --ion-color-primary-contrast: #ffffff;
+  --ion-color-primary-contrast-rgb: 255, 255, 255;
+  --ion-color-primary-shade: #3171e0;
+  --ion-color-primary-tint: #4c8dff;
+
+  /** secondary **/
+  --ion-color-secondary: #0cd1e8;
+  --ion-color-secondary-rgb: 12, 209, 232;
+  --ion-color-secondary-contrast: #ffffff;
+  --ion-color-secondary-contrast-rgb: 255, 255, 255;
+  --ion-color-secondary-shade: #0bb8cc;
+  --ion-color-secondary-tint: #24d6ea;
+
+  /** tertiary **/
+  --ion-color-tertiary: #7044ff;
+  --ion-color-tertiary-rgb: 112, 68, 255;
+  --ion-color-tertiary-contrast: #ffffff;
+  --ion-color-tertiary-contrast-rgb: 255, 255, 255;
+  --ion-color-tertiary-shade: #633ce0;
+  --ion-color-tertiary-tint: #7e57ff;
+
+  /** success **/
+  --ion-color-success: #10dc60;
+  --ion-color-success-rgb: 16, 220, 96;
+  --ion-color-success-contrast: #ffffff;
+  --ion-color-success-contrast-rgb: 255, 255, 255;
+  --ion-color-success-shade: #0ec254;
+  --ion-color-success-tint: #28e070;
+
+  /** warning **/
+  --ion-color-warning: #ffce00;
+  --ion-color-warning-rgb: 255, 206, 0;
+  --ion-color-warning-contrast: #ffffff;
+  --ion-color-warning-contrast-rgb: 255, 255, 255;
+  --ion-color-warning-shade: #e0b500;
+  --ion-color-warning-tint: #ffd31a;
+
+  /** danger **/
+  --ion-color-danger: #f04141;
+  --ion-color-danger-rgb: 245, 61, 61;
+  --ion-color-danger-contrast: #ffffff;
+  --ion-color-danger-contrast-rgb: 255, 255, 255;
+  --ion-color-danger-shade: #d33939;
+  --ion-color-danger-tint: #f25454;
+
+  /** dark **/
+  --ion-color-dark: #222428;
+  --ion-color-dark-rgb: 34, 34, 34;
+  --ion-color-dark-contrast: #ffffff;
+  --ion-color-dark-contrast-rgb: 255, 255, 255;
+  --ion-color-dark-shade: #1e2023;
+  --ion-color-dark-tint: #383a3e;
+
+  /** medium **/
+  --ion-color-medium: #989aa2;
+  --ion-color-medium-rgb: 152, 154, 162;
+  --ion-color-medium-contrast: #ffffff;
+  --ion-color-medium-contrast-rgb: 255, 255, 255;
+  --ion-color-medium-shade: #86888f;
+  --ion-color-medium-tint: #a2a4ab;
+
+  /** light **/
+  --ion-color-light: #f4f5f8;
+  --ion-color-light-rgb: 244, 244, 244;
+  --ion-color-light-contrast: #000000;
+  --ion-color-light-contrast-rgb: 0, 0, 0;
+  --ion-color-light-shade: #d7d8da;
+  --ion-color-light-tint: #f5f6f9;
+
+  --ion-text-color: #333;
+}
+
+/*
+ 浏览器一般默认字体大小是16px，设置font-size: 62.5%;这样字体大小为10px，
+ 此时10px=1rem  1.4rem=14px，所以可以愉快的使用rem做css长度单位了
+*/
+html {
+  font-size: 62.5%;
+}
+
+// 自定义alert样式,使alert的显示级别为最高
+.alert-zIndex-highest {
+  z-index: 100100 !important;
+}
+
+/* 增加可点击范围 */
+.add-tap-range::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  bottom: -10px;
+  left: -10px;
+  right: -10px;
+}
+
+// 自定义表单默认样式
+.myForm {
+  $label-width: 62px;
+  $danger-color: #f53d3d;
+  ion-item {
+    font-size: 1.5rem;
+    --ion-background-color: #fff;
+  }
+  ion-label {
+    min-width: $label-width;
+    &[required]:before, &.required:before {
+      position: absolute; /* 使用绝对定位让*不占用位置 */
+      color: $danger-color;
+      content: '*';
+      margin-left: -8px;
+      margin-top: 3px;
+    }
+    &.too-long { /* label内容超过$label-width自动换行 */
+      text-overflow: inherit;
+      white-space: normal;
+      margin: 1px 8px 1px 0;
+      width: $label-width;
+    }
+  }
+  ion-input, ion-datetime, ion-select {
+    width: 100%;
+    max-width: 100%;
+    padding-left: 0;
+    --placeholder-color: #aaa;
+    --placeholder-opacity: 1;
+  }
+  .select-placeholder {
+    color: red !important;
+  }
+
+  .form-invalid-tip {
+    padding: 1px 16px;
+    color: $danger-color;
+    line-height: 18px;
+    > div:before {
+      content: '!';
+      display: inline-block;
+      text-align: center;
+      font-size: 14px;
+      color: #fff;
+      width: 17px;
+      height: 16px;
+      background: $danger-color;
+      border-radius: 50%;
+      margin-right: 2px;
+    }
+  }
+
+  .form-item-content {
+    width: 100%;
+    margin: 11px 0;
+    .form-radio, .form-checkbox {
+      margin-right: 8px;
+      display: inline-block;
+      ion-icon {
+        font-size: 20px;
+        vertical-align: top;
+      }
+    }
+    .form-textarea {
+      min-height: 18px;
+      max-height: 100px; /* 自定义最大高度，超出会显示滚动条 */
+      overflow: auto;
+      outline: none;
+      -webkit-user-select: text;
+    }
+    .form-textarea-placeholder:before {
+      content: '说你想说的...';
+      position: absolute;
+      color: #999;
+      text-overflow: clip;
+      z-index: -1;
+    }
+    .form-number-step {
+      input {
+        width: 30px;
+        border: none;
+        text-align: center;
+        vertical-align: bottom;
+        line-height: 22px;
+      }
+      ion-icon {
+        font-size: 20px;
+        vertical-align: top;
+        font-weight: bold;
+        color: #999;
+        background: #eee;
+        border-radius: 50%;
+        width: 22px;
+        height: 22px;
+        text-align: center;
+        position: relative;
+        &:after {
+          content: '';
+          position: absolute;
+          top: -5px;
+          bottom: -5px;
+          right: -5px;
+          left: -5px;
+        }
+      }
+    }
+  }
+
+}
