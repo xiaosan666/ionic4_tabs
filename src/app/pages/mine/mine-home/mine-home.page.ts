@@ -39,9 +39,6 @@ export class MineHomePage implements OnInit {
             this.router.navigateByUrl('/login');
         }, () => {
         });
-        setTimeout(() => {
-            this.events.publish('goBack');
-        }, 3000);
     }
 
 }
