@@ -54,8 +54,12 @@ export class Tab1Page {
     }
 
     test2() {
-        this.http.get('/v1/demo/map_result_get2', {param: 1}).subscribe(res => {
+        // this.http.get('/v1/demo/map_result_get2', {param: 1}).subscribe(res => {
+        //     console.log(res);
+        // });
+        this.native.getAppVersionInfo().subscribe(res => {
             console.log(res);
+            debugger;
         });
     }
 

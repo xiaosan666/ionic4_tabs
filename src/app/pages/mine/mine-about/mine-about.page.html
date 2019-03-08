@@ -1,0 +1,30 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button></ion-back-button>
+        </ion-buttons>
+        <ion-title>关于</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <div text-center margin>
+        <img src="./assets/icon/favicon.png" alt="logo">
+        <h3>{{appInfo.appName}}</h3>
+        <div style="font-size: 1.4rem">版本号：{{appInfo.versionNumber}}</div>
+    </div>
+    <ion-list lines="full" margin-horizontal>
+        <ion-item detail tappable (click)="checkNewVersion()">
+            <ion-label>检查新版本</ion-label>
+        </ion-item>
+        <ion-item detail tappable (click)="updateLog()">
+            <ion-label>更新日志</ion-label>
+        </ion-item>
+        <ion-item detail tappable (click)="features()">
+            <ion-label>功能介绍</ion-label>
+        </ion-item>
+        <ion-item detail tappable (click)="feedBack()">
+            <ion-label>投诉建议</ion-label>
+        </ion-item>
+    </ion-list>
+</ion-content>

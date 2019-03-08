@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NativeService } from '../../../providers/NativeService';
 import { Helper } from '../../../providers/Helper';
 import { Router } from '@angular/router';
+import { Events } from '@ionic/angular';
 
 @Component({
     selector: 'app-mine-home',
@@ -12,6 +13,7 @@ export class MineHomePage implements OnInit {
 
     constructor(public helper: Helper,
                 public router: Router,
+                public events: Events,
                 public native: NativeService) {
     }
 
@@ -37,6 +39,9 @@ export class MineHomePage implements OnInit {
             this.router.navigateByUrl('/login');
         }, () => {
         });
+        setTimeout(() => {
+            this.events.publish('goBack');
+        }, 3000);
     }
 
 }

@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { AlertController, Events } from '@ionic/angular';
 import { NativeService } from '../../../providers/NativeService';
 import { Helper } from '../../../providers/Helper';
-import { createOutput } from '@angular/compiler/src/core';
 
 @Component({
     selector: 'app-mine-info',
@@ -25,11 +24,6 @@ export class MineInfoPage implements OnInit {
     }
 
     ngOnInit() {
-    }
-
-    router() {
-        console.log('goBack');
-        this.events.publish('goBack');
     }
 
     updateAvatar() {

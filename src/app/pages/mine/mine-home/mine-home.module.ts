@@ -12,6 +12,8 @@ const routes: Routes = [
     {path: 'home', component: MineHomePage},
     {path: 'info', loadChildren: '../mine-info/mine-info.module#MineInfoPageModule'},
     {path: 'qr-code', loadChildren: '../mine-qr-code/mine-qr-code.module#MineQrCodePageModule'},
+    {path: 'about', loadChildren: '../mine-about/mine-about.module#MineAboutPageModule'},
+
 ];
 
 @NgModule({

@@ -145,11 +145,10 @@ export class NativeService {
             quality: 100,
             ...options
         };
-        from(ImagePicker.getPictures);
         return Observable.create(observer => {
-            ImagePicker.getPictures(function (result) {
+            ImagePicker.getPictures(result => {
                 observer.next(result.images);
-            }, function (err) {
+            }, err => {
                 err === '已取消' ? console.log(err) : Logger.error(err, 'NativeService.getPictures');
                 observer.error(false);
             }, ops);

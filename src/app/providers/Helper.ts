@@ -58,7 +58,7 @@ export class Helper {
      */
     assertIsMobile(): void {
         if (this.isNotMobile()) {
-            this.alert('请使用真机调试', '调用手机硬件功能请使用真机调试');
+            this.toast('请使用真机调试');
             throw new Error('请使用真机调试');
         }
     }
