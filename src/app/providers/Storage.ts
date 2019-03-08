@@ -19,7 +19,7 @@ export class Storage {
         remove(key: string) {
             sessionStorage.removeItem(key);
         },
-        clear(key: string) {
+        clear() {
             sessionStorage.clear();
         }
     };
@@ -35,7 +35,7 @@ export class Storage {
         remove(key: string) {
             localStorage.removeItem(key);
         },
-        clear(key: string) {
+        clear() {
             localStorage.clear();
         }
     };

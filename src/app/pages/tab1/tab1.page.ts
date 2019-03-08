@@ -15,7 +15,6 @@ export class Tab1Page {
 
     constructor(public native: NativeService,
                 public helper: Helper,
-                public globalData: GlobalData,
                 public http: HttpService) {
         console.log(Utils.dateFormat(new Date(), 'yyyy-MM-ddTHH:mm:ss+08:00'));
         Logger.log(111);
@@ -28,7 +27,7 @@ export class Tab1Page {
             'username': 'admin',
             'password': Utils.md5('123456') // 123456 'e10adc3949ba59abbe56e057f20f883e'
         }).subscribe(res => {
-            this.globalData.token = res;
+            GlobalData.token = res;
             console.log(res);
         });
     }
@@ -54,12 +53,9 @@ export class Tab1Page {
     }
 
     test2() {
-        // this.http.get('/v1/demo/map_result_get2', {param: 1}).subscribe(res => {
-        //     console.log(res);
-        // });
-        this.native.getAppVersionInfo().subscribe(res => {
+        // this.helper.showLoading('正在加载数据');
+        this.http.get('/v1/demo/map_result_get2', {param: 1}).subscribe(res => {
             console.log(res);
-            debugger;
         });
     }
 

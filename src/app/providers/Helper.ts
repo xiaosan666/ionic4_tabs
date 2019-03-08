@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { AlertController, LoadingController, Platform, ToastController } from '@ionic/angular';
 import { Logger } from './Logger';
 import { environment } from '../../environments/environment';
+import { Storage } from './Storage';
+import { GlobalData } from './GlobalData';
 
 /**
  * 帮助类：存放和业务有关的公共方法
@@ -125,8 +127,14 @@ export class Helper {
             duration: environment.requestTimeout,
             message
         }).then(loading => {
-            loading.present();
-            this.Loading = loading;
+            /**
+             * loadingController.create异步方法，调用loading.present()前有可能已经调用hideLoading方法
+             * 所以，如果this.LoadingIsExist===false则不打开
+             */
+            if (this.LoadingIsExist) {
+                loading.present();
+                this.Loading = loading;
+            }
         });
     }
 
@@ -134,19 +142,24 @@ export class Helper {
      * 关闭loading
      */
     hideLoading(): void {
-        // loadingController.create 方法是异步，调用关闭时可能存在未打开的情况
-        if (this.LoadingIsExist) {
-            if (this.Loading) {
-                this.Loading.dismiss();
-                this.Loading = null;
-                this.LoadingIsExist = false;
-            } else {
-                setTimeout(() => {
-                    this.Loading && this.Loading.dismiss();
-                    this.Loading = null;
-                    this.LoadingIsExist = false;
-                }, 200);
-            }
+        this.LoadingIsExist = false;
+        if (this.Loading) {
+            this.Loading.dismiss();
+            this.Loading = null;
         }
     }
+
+
+    /**
+     * 登录成功处理
+     */
+    loginSuccessHandle(userInfo) {
+        Storage.sessionStorage.clear(); // 清除数据缓存
+        GlobalData.userId = userInfo.id;
+        GlobalData.username = userInfo.username;
+        GlobalData.realname = userInfo.realname;
+        GlobalData.mobileNumber = userInfo.mobileNumber;
+        GlobalData.avatarPath = userInfo.avatarPath;
+    }
+
 }

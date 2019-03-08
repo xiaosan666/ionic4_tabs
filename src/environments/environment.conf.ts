@@ -4,14 +4,14 @@
 
 export const devServers = {
     appServerUrl: 'https://yanxiaojun617.com/invoice/api/',
-    fileServerUrl: 'http://172.16.19.136:9000/kit_file_server/',
+    fileServerUrl: 'https://yanxiaojun617.com/fileService/',
     requestTimeout: 20000,
     defaultAvatar: './assets/avatar/default.png'
 };
 
 export const prodServers = {
     appServerUrl: 'https://yanxiaojun617.com/invoice/api/',
-    fileServerUrl: 'http://172.16.19.136:9000/kit_file_server/',
+    fileServerUrl: 'https://yanxiaojun617.com/fileService/',
     requestTimeout: 20000,
     defaultAvatar: './assets/avatar/default.png'
 };

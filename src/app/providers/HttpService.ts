@@ -20,7 +20,6 @@ export class HttpService extends HttpHelper {
 
     constructor(public http: HttpClient,
                 public helper: Helper,
-                public globalData: GlobalData,
                 public native: NativeService) {
         super(helper);
     }
@@ -80,9 +79,9 @@ export class HttpService extends HttpHelper {
             options.url = environment.appServerUrl + options.url;
         }
         //  添加请求头
-        if (this.globalData.token) {
+        if (GlobalData.token) {
             options.headers = options.headers || new HttpHeaders();
-            options.headers = options.headers.set('Authorization', `Bearer ${this.globalData.token}`);  // 注：set append返回新的HttpHeaders
+            options.headers = options.headers.set('Authorization', `Bearer ${GlobalData.token}`);  // 注：set append返回新的HttpHeaders
         }
         return Observable.create(observer => {
             this.request(options, setting).subscribe(res => {
