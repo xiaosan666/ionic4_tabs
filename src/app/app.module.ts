@@ -1,14 +1,22 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
-
-import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
-import { SplashScreen } from '@ionic-native/splash-screen/ngx';
-import { StatusBar } from '@ionic-native/status-bar/ngx';
-
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
+import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
+
+import { AppRoutingModule } from './app-routing.module';
+
+import { SplashScreen } from '@ionic-native/splash-screen/ngx';
+import { StatusBar } from '@ionic-native/status-bar/ngx';
+import { AppVersion } from '@ionic-native/app-version/ngx';
+import { SocialSharing } from '@ionic-native/social-sharing/ngx';
+import { Toast } from '@ionic-native/toast/ngx';
+import { AppMinimize } from '@ionic-native/app-minimize/ngx';
+import { PhotoLibrary } from '@ionic-native/photo-library/ngx';
+import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
+import { Network } from '@ionic-native/network/ngx';
+
 
 @NgModule({
     declarations: [AppComponent],
@@ -22,6 +30,13 @@ import { HttpClientModule } from '@angular/common/http';
     providers: [
         StatusBar,
         SplashScreen,
+        AppVersion,
+        SocialSharing,
+        Toast,
+        AppMinimize,
+        PhotoLibrary,
+        InAppBrowser,
+        Network,
         {provide: RouteReuseStrategy, useClass: IonicRouteStrategy}
     ],
     bootstrap: [AppComponent]
