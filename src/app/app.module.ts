@@ -17,7 +17,6 @@ import { PhotoLibrary } from '@ionic-native/photo-library/ngx';
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 import { Network } from '@ionic-native/network/ngx';
 
-
 @NgModule({
     declarations: [AppComponent],
     entryComponents: [],

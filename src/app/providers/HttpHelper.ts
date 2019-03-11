@@ -41,13 +41,17 @@ export declare interface RequestSetting {
 })
 export class HttpHelper {
     static requestCount = 0; // 记录未完成的请求数量,当请求数为0关闭loading,当不为0显示loading
-    static defaultSetting: RequestSetting = {
-        useDefaultApi: true,
-        needCache: false,
-        showLoading: true,
-    };
 
     constructor(public helper: Helper) {
+    }
+
+    static getDefaultSetting(setting) {
+        const defaultSetting: RequestSetting = {
+            useDefaultApi: true,
+            needCache: false,
+            showLoading: true,
+        };
+        return setting ? {...defaultSetting, ...setting} : defaultSetting;
     }
 
     static getCacheData(options) {

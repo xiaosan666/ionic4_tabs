@@ -20,6 +20,7 @@ export class Tab2Page {
     defaultValue = {
         username: null,
         password: null,
+        newPassword: '123456',
         name: null,
         phone: null,
         birthday: null,
@@ -30,7 +31,7 @@ export class Tab2Page {
         hobby: [],
         games: [],
         tooth: 0,
-        introduction: null
+        intro: null
     };
 
     model: any = JSON.parse(JSON.stringify(this.defaultValue)); // 利用JSON方法进行深拷贝
@@ -66,6 +67,7 @@ export class Tab2Page {
         this.model = {
             username: 'yanxiaojun617',
             password: '123456',
+            newPassword: '123456',
             name: '张三',
             phone: '18688498342',
             birthday: '1995-09-09',
@@ -80,7 +82,7 @@ export class Tab2Page {
             hobby: [2, 3],
             games: [1, 3],
             tooth: 1,
-            introduction: '注意：使用div模拟textarea从而实现根据内容多少自动改变文本域高度。https://github.com/KostyaTretyak/ng-contenteditable'
+            intro: '注：使用div模拟textarea从而实现根据内容多少自动改变文本域高度。https://github.com/KostyaTretyak/ng-contenteditable'
         };
     }
 

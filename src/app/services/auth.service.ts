@@ -2,9 +2,10 @@ import { Injectable } from '@angular/core';
 import { HttpService } from '../providers/HttpService';
 import { Utils } from '../providers/Utils';
 import { map, mergeMap } from 'rxjs/operators';
-import { of } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { GlobalData } from '../providers/GlobalData';
 import { FileService } from '../providers/FileService';
+import { ValidationErrors } from '@angular/forms';
 
 @Injectable({
     providedIn: 'root'
@@ -45,5 +46,23 @@ export class AuthService {
     // 获取新token
     getNewToken() {
         return this.http.post('/v1/refresh_token');
+    }
+
+    getUserByName(value): Observable<ValidationErrors | null> {
+        // todo 这里模拟后台操作
+        /* return Observable.create(observer => {
+             if (value === 'test') {
+                 observer.next(null); // 返回null表示验证通过
+             } else {
+                 observer.next({'exist': value}); // 返回非null表示验证失败，其中'exist'可以作为验证失败的类型在页面上判断
+             }
+         });*/
+        const url = '/v1/user/view/username_number';
+        const paramMap = {username: value};
+        return this.http.postFormData(url, paramMap, {showLoading: false}).pipe(
+            map(userNumber => {
+                return userNumber === 0 ? null : {'exist': value};
+            })
+        );
     }
 }

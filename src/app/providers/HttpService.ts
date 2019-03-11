@@ -24,7 +24,7 @@ export class HttpService extends HttpHelper {
         super(helper);
     }
 
-    public get(url: string, params: any = {}, setting: RequestSetting = HttpHelper.defaultSetting) {
+    public get(url: string, params: any = {}, setting: RequestSetting = {}) {
         const options = {
             method: 'GET',
             url: url,
@@ -33,7 +33,7 @@ export class HttpService extends HttpHelper {
         return this.doRequest(options, setting);
     }
 
-    public post(url: string, body: any = {}, setting: RequestSetting = HttpHelper.defaultSetting): Observable<any> {
+    public post(url: string, body: any = {}, setting: RequestSetting = {}): Observable<any> {
         const options = {
             method: 'POST',
             url: url,
@@ -45,7 +45,7 @@ export class HttpService extends HttpHelper {
         return this.doRequest(options, setting);
     }
 
-    public delete(url: string, params: any = {}, setting: RequestSetting = HttpHelper.defaultSetting) {
+    public delete(url: string, params: any = {}, setting: RequestSetting = {}) {
         const options = {
             method: 'DELETE',
             url: url,
@@ -54,7 +54,7 @@ export class HttpService extends HttpHelper {
         return this.doRequest(options, setting);
     }
 
-    public postFormData(url: string, params: any = {}, setting: RequestSetting = HttpHelper.defaultSetting): Observable<any> {
+    public postFormData(url: string, params: any = {}, setting: RequestSetting = {}): Observable<any> {
         const options = {
             method: 'POST',
             url: url,
@@ -67,7 +67,8 @@ export class HttpService extends HttpHelper {
     }
 
     public doRequest(options, setting: RequestSetting) {
-        return setting.useDefaultApi ? this.defaultRequest(options, setting) : this.request(options, setting);
+        const defaultSetting = HttpHelper.getDefaultSetting(setting);
+        return defaultSetting.useDefaultApi ? this.defaultRequest(options, defaultSetting) : this.request(options, defaultSetting);
     }
 
     /**
@@ -92,7 +93,7 @@ export class HttpService extends HttpHelper {
         });
     }
 
-    public request(ops, setting: RequestSetting): Observable<any> {
+    public request(ops, set: RequestSetting): Observable<any> {
         const options = {
             url: '',
             method: 'POST',
@@ -105,6 +106,7 @@ export class HttpService extends HttpHelper {
             responseType: 'json',
             ...ops
         };
+        const setting = HttpHelper.getDefaultSetting(set);
         options.url = Utils.formatUrl(options.url);
         return Observable.create(observer => {
             // 如果需要缓存，先尝试从sessionStorage中取数据

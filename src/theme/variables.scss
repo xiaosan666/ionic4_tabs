@@ -175,9 +175,8 @@ html {
     .form-textarea-placeholder:before {
       content: '说你想说的...';
       position: absolute;
-      color: #999;
+      color: #aaa;
       text-overflow: clip;
-      z-index: -1;
     }
     .form-number-step {
       input {

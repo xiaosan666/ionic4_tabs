@@ -13,12 +13,14 @@
             <ion-item>
                 <ion-label required>用户名</ion-label>
                 <ion-input type="text" name="username" placeholder="请输入用户名（必填）" [(ngModel)]="model.username"
-                           #username="ngModel"
-                           required pattern="[A-Za-z0-9]{4,20}" autocomplete="off"></ion-input>
+                           #username="ngModel" required validator-regular="legallyNamed" validator-username-exist
+                           autocomplete="off"></ion-input>
+                <ion-spinner name="bubbles" item-end *ngIf="username.pending"></ion-spinner>
             </ion-item>
             <div *ngIf="username.invalid && username.dirty" class="form-invalid-tip">
                 <div *ngIf="username.errors.required">用户名是必填项</div>
-                <div *ngIf="username.errors.pattern">用户名只能是4到20位长度的英文或数字</div>
+                <div *ngIf="username.errors.legallyNamed">用户名只能是4到20位长度的英文或数字</div>
+                <div *ngIf="username.errors.exist">用户名已经存在</div>
             </div>
 
             <ion-item>
@@ -144,14 +146,38 @@
             </ion-item>
 
             <ion-item>
-                <ion-label>个人简介</ion-label>
-                <!-- <div item-content class="form-item-content">
-                   <div class="form-textarea" contenteditable="true" [ngClass]="{'form-textarea-placeholder': !model.introduction}" name="introduction" [(ngModel)]="model.introduction"></div>
-                 </div>-->
-                <ion-textarea cols="3" placeholder="说你想说的..." name="introduction"
-                              [(ngModel)]="model.introduction"></ion-textarea>
+                <ion-label class="too-long">个人简介</ion-label>
+                <div item-content class="form-item-content">
+                    <div class="form-textarea" [ngClass]="{'form-textarea-placeholder': !model.intro}" name="intro"
+                         [(ngModel)]="model.intro" appContentEditable="true"></div>
+                </div>
             </ion-item>
 
+        </ion-list>
+
+        <ion-list>
+            <form #testForm="ngForm" validator-password-identical>
+                <ion-list>
+                    <ion-item>
+                        <ion-label required>密码</ion-label>
+                        <ion-input type="password" name="password" autocomplete="off" placeholder="请输入密码（必填）"
+                                   [(ngModel)]="model.password" #password="ngModel" required
+                                   pattern=".{6,20}"></ion-input>
+                    </ion-item>
+                    <div *ngIf="password.invalid && password.dirty" class="form-invalid-tip">
+                        <div *ngIf="password.errors.required">密码是必填项</div>
+                        <div *ngIf="password.errors.pattern">密码长度为6到20位</div>
+                    </div>
+                    <ion-item>
+                        <ion-label class="too-long">再次输入密码</ion-label>
+                        <ion-input type="password" name="newPassword" autocomplete="off" placeholder="请输入密码（必填）"
+                                   [(ngModel)]="model.newPassword" #newPassword="ngModel"></ion-input>
+                    </ion-item>
+                    <div *ngIf="newPassword.dirty" class="form-invalid-tip">
+                        <div *ngIf="testForm.errors?.passwordInvalid">两次密码输入不一致</div>
+                    </div>
+                </ion-list>
+            </form>
         </ion-list>
 
     </form>

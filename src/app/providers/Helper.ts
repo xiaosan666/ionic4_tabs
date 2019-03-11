@@ -123,7 +123,7 @@ export class Helper {
         }
         this.LoadingIsExist = true;
         this.loadingController.create({
-            spinner: 'dots', // https://ionicframework.com/docs/api/spinner
+            spinner: 'bubbles', // dots https://ionicframework.com/docs/api/spinner
             duration: environment.requestTimeout,
             message
         }).then(loading => {
