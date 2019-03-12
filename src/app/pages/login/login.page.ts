@@ -43,4 +43,8 @@ export class LoginPage implements OnInit {
             this.loading = false;
         });
     }
+
+    findPassword() {
+        this.helper.tipDev();
+    }
 }

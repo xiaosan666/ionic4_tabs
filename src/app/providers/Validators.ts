@@ -25,9 +25,9 @@ export class Validators extends angularValidators {
         return Validators.validatorsByPattern('chinese', control, '[(\u4e00-\u9fa5)]+');
     }
 
-    /*英文、数字包括下划线*/
+    /*用户名（英文+数字，4到12位）*/
     static legallyNamed(control: AbstractControl) {
-        return Validators.validatorsByPattern('legallyNamed', control, '[A-Za-z0-9_]+');
+        return Validators.validatorsByPattern('legallyNamed', control, '[A-Za-z0-9]{4,20}');
     }
 
     private static validatorsByPattern(name: string, control: AbstractControl, pattern: string) {

@@ -24,6 +24,16 @@ export class AuthService {
         });
     }
 
+    // 获取新token（旧token作为请求头参数）
+    getNewToken() {
+        return this.http.post('/v1/refresh_token');
+    }
+
+    // 注册
+    register(user) {
+        return this.http.post('/v1/user/op/register', user);
+    }
+
     // 查询用户信息
     getUserInfo() {
         return this.http.get('/v1/public/user/self').pipe(
@@ -43,11 +53,8 @@ export class AuthService {
         );
     }
 
-    // 获取新token
-    getNewToken() {
-        return this.http.post('/v1/refresh_token');
-    }
 
+    // 判断用户名是否已经存在
     getUserByName(value): Observable<ValidationErrors | null> {
         // todo 这里模拟后台操作
         /* return Observable.create(observer => {

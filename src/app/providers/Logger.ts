@@ -16,7 +16,7 @@ export class Logger {
     }
 
     static http(err: any, data) {
-        console.log(data); // 上报日志
+        console.log({...data}); // 上报日志
         Logger.error(err, '请求出错');
     }
 

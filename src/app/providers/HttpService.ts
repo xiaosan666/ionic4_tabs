@@ -154,13 +154,13 @@ export class HttpService extends HttpHelper {
             this.helper.alert('提示', '请求超时,请稍后再试!');
         } else {
             if (status === 0) {
-                msg = '请求失败，可能后台服务未启用';
+                msg = '可能后台服务未启用';
             } else if (status === 404) {
-                msg = '请求失败，未找到请求地址';
+                msg = status + ' 未找到请求地址';
             } else if (status === 500) {
-                msg = '请求失败，服务器出错，请稍后再试';
+                msg = status + ' 服务器出错，请稍后再试';
             }
-            this.helper.alert(msg);
+            this.helper.alert('请求失败', msg);
             Logger.http(err, {
                 url,
                 status

@@ -86,6 +86,40 @@ export class Utils {
     }
 
     /**
+     * 密码强度 返回：low middle high
+     */
+    static checkPass(pwd) {
+        let m = 0;
+        if (pwd.length <= 6) {
+            return 'low'; // 密码长度小于等于6
+        }
+        if (/\d/.test(pwd)) {
+            m++; // 纯数字密码
+        }
+        if (/[a-z]/.test(pwd)) {
+            m++; // 密码包含小写字母
+        }
+        if (/[A-Z]/.test(pwd)) {
+            m++; // 密码包含大写字母
+        }
+        if (/\W/.test(pwd)) {
+            m++; // 密码包含特殊字符
+        }
+        if (pwd.length > 15) {
+            m = 4; // 密码长度大于15
+        }
+        if (m < 2) {
+            return 'low';
+        }
+        if (m === 2) {
+            return 'middle';
+        }
+        if (m >= 3) {
+            return 'high';
+        }
+    }
+
+    /**
      * 把url中的双斜杠替换为单斜杠
      * 如:http://localhost:8080//api//demo.替换后http://localhost:8080/api/demo
      */

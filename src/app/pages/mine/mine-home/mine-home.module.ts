@@ -13,7 +13,7 @@ const routes: Routes = [
     {path: 'info', loadChildren: '../mine-info/mine-info.module#MineInfoPageModule'},
     {path: 'qr-code', loadChildren: '../mine-qr-code/mine-qr-code.module#MineQrCodePageModule'},
     {path: 'about', loadChildren: '../mine-about/mine-about.module#MineAboutPageModule'},
-
+    {path: 'modify-password', loadChildren: '../modify-password/modify-password.module#ModifyPasswordPageModule'}
 ];
 
 @NgModule({

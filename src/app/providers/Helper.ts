@@ -65,6 +65,12 @@ export class Helper {
         }
     }
 
+    /**
+     * tip 开发中
+     */
+    tipDev() {
+        this.toast('开发中');
+    }
 
     /**
      * alert弹框，默认只有确定按钮，当存在取消回调函数则会显示取消按钮
