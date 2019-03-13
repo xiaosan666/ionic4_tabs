@@ -46,7 +46,7 @@ export class MineQrCodePage implements OnInit {
         this.loading = true;
         this.native.savePicture(this.shareBase64 || this.qrCodeUrl).subscribe(res => {
             this.loading = false;
-            this.native.toast('保存成功');
+            this.helper.toast('保存成功');
         });
     }
 }

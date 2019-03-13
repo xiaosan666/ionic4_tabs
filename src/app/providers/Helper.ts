@@ -105,9 +105,7 @@ export class Helper {
         this.alertController.create({
             header,
             message,
-            buttons,
-            // cssClass: 'alert-zIndex-highest',
-            backdropDismiss: false
+            buttons
         }).then(alert => alert.present());
     }
 
@@ -116,7 +114,7 @@ export class Helper {
      * 建议优先调用 NativeService.toast
      */
     toast(message: string = '操作成功', duration: number = 2500, position: 'top' | 'bottom' | 'middle' = 'middle'): void {
-        const opts = {message, duration, position, showCloseButton: true, closeButtonText: '✖'};
+        const opts = {message, duration, color: 'dark', position, showCloseButton: true, closeButtonText: '✖'};
         this.toastController.create(opts).then(toast => toast.present());
     }
 

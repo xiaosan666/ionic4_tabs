@@ -53,7 +53,6 @@ export class Tab1Page {
     }
 
     test2() {
-        // this.helper.showLoading('正在加载数据');
         this.http.get('/v1/demo/map_result_get2', {param: 1}).subscribe(res => {
             console.log(res);
         });

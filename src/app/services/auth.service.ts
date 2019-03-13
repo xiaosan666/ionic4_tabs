@@ -54,6 +54,14 @@ export class AuthService {
     }
 
 
+    // 修改密码
+    modifyPassword(oldPsw: string, newPsw: string) {
+        return this.http.postFormData('/v1/update_password', {
+            'old_password': Utils.md5(oldPsw),
+            'new_password': Utils.md5(newPsw)
+        });
+    }
+
     // 判断用户名是否已经存在
     getUserByName(value): Observable<ValidationErrors | null> {
         // todo 这里模拟后台操作

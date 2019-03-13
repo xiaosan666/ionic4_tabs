@@ -11,7 +11,6 @@ import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AppVersion } from '@ionic-native/app-version/ngx';
 import { SocialSharing } from '@ionic-native/social-sharing/ngx';
-import { Toast } from '@ionic-native/toast/ngx';
 import { AppMinimize } from '@ionic-native/app-minimize/ngx';
 import { PhotoLibrary } from '@ionic-native/photo-library/ngx';
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
@@ -31,7 +30,6 @@ import { Network } from '@ionic-native/network/ngx';
         SplashScreen,
         AppVersion,
         SocialSharing,
-        Toast,
         AppMinimize,
         PhotoLibrary,
         InAppBrowser,

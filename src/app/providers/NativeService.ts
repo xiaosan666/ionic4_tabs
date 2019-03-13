@@ -1,12 +1,11 @@
 import { Injectable } from '@angular/core';
-import { from, Observable, of } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { Logger } from './Logger';
 import { Helper } from './Helper';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { AppVersion } from '@ionic-native/app-version/ngx';
 import { SocialSharing } from '@ionic-native/social-sharing/ngx';
-import { Toast } from '@ionic-native/toast/ngx';
 import { AppMinimize } from '@ionic-native/app-minimize/ngx';
 import { PhotoLibrary } from '@ionic-native/photo-library/ngx';
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
@@ -27,7 +26,6 @@ export class NativeService {
                 private splashScreen: SplashScreen,
                 private appVersion: AppVersion,
                 private socialSharing: SocialSharing,
-                private toastCtrl: Toast,
                 private minimize: AppMinimize,
                 private photoLibrary: PhotoLibrary,
                 private iab: InAppBrowser,
@@ -87,16 +85,6 @@ export class NativeService {
         return this.getNetworkType() !== 'none';
     }
 
-    /**
-     * 统一调用此方法显示提示信息
-     */
-    toast(message: string = '操作成功', duration: number = 2500, position: string = 'center'): void {
-        if (this.helper.isMobile()) {
-            this.toastCtrl.show(message, '' + duration, position).subscribe();
-        } else {
-            this.helper.toast(message, duration, 'middle');
-        }
-    }
 
     /**
      * 获取app名称，包名，版本号

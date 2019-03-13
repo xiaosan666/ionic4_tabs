@@ -142,7 +142,7 @@ export class HttpService extends HttpHelper {
             const errData = err.error;
             //  401 token无效或过期需要重新登录
             if (errData.code === 401) {
-                this.native.toast('密码已过期,请重新登录');
+                this.helper.toast('密码已过期,请重新登录');
             } else {
                 this.helper.alert('提示', errData.msg || msg);
             }

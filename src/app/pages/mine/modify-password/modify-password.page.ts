@@ -26,9 +26,9 @@ export class ModifyPasswordPage implements OnInit {
 
     formSubmit() {
         this.loading = true;
-        this.auth.register(this.model).subscribe(res => {
+        this.auth.modifyPassword(this.model.oldPsw, this.model.newPassword).subscribe(res => {
             this.loading = false;
-            this.helper.alert('注册成功', '确定后前往登录', () => {
+            this.helper.alert('密码修改成功', '确定后前往登录', () => {
                 this.router.navigateByUrl('/login');
             });
         }, () => {
