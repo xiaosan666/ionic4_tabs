@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { mergeMap } from 'rxjs/operators';
 import { GlobalData } from '../../providers/GlobalData';
 import { Storage } from '../../providers/Storage';
 import { Helper } from '../../providers/Helper';
 import { UserInfo } from '../../interfaces/UserInfo';
+import { NavController } from '@ionic/angular';
 
 @Component({
     selector: 'app-login',
@@ -19,7 +19,7 @@ export class LoginPage implements OnInit {
         password: '123456'
     };
 
-    constructor(public router: Router,
+    constructor(public nav: NavController,
                 public helper: Helper,
                 public auth: AuthService) {
     }
@@ -38,7 +38,7 @@ export class LoginPage implements OnInit {
         ).subscribe((userInfo: UserInfo) => {
             this.loading = false;
             this.helper.loginSuccessHandle(userInfo);
-            this.router.navigateByUrl('/');
+            this.nav.navigateRoot('/');
         }, () => {
             this.loading = false;
         });

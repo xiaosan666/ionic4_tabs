@@ -1,6 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 
-import { IonRouterOutlet, Platform } from '@ionic/angular';
+import { IonRouterOutlet, NavController, Platform } from '@ionic/angular';
 import { NativeService } from './providers/NativeService';
 import { Helper } from './providers/Helper';
 import { UserInfo } from './interfaces/UserInfo';
@@ -8,7 +8,6 @@ import { Storage } from './providers/Storage';
 import { GlobalData } from './providers/GlobalData';
 import { AuthService } from './services/auth.service';
 import { mergeMap } from 'rxjs/operators';
-import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-root',
@@ -18,7 +17,7 @@ export class AppComponent {
     @ViewChild(IonRouterOutlet) routerOutlet: IonRouterOutlet;
 
     constructor(public platform: Platform,
-                public router: Router,
+                public nav: NavController,
                 public helper: Helper,
                 public native: NativeService,
                 public auth: AuthService) {
@@ -29,8 +28,7 @@ export class AppComponent {
         this.platform.ready().then(() => {
             const oldToken = Storage.localStorage.get('token'); // 从缓存中获取token
             if (oldToken) {
-                GlobalData.token = oldToken;
-                // 旧token作为请求头参数，用旧token获取新token
+                GlobalData.token = oldToken; // 旧token作为请求头参数，用旧token获取新token
                 this.auth.getNewToken().pipe(
                     mergeMap(token => {
                         GlobalData.token = token;
@@ -39,12 +37,12 @@ export class AppComponent {
                     })
                 ).subscribe((userInfo: UserInfo) => {
                     this.helper.loginSuccessHandle(userInfo);
-                    this.router.navigateByUrl('/');
+                    this.nav.navigateRoot('/');
                 }, () => {
-                    this.router.navigateByUrl('/login');
+                    this.nav.navigateRoot('/login');
                 });
             } else {
-                this.router.navigateByUrl('/login');
+                this.nav.navigateRoot('/login');
             }
             this.native.setStatusBarStyle();
             this.native.hideSplashScreen();
