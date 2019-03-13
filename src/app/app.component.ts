@@ -1,6 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 
-import { Events, IonRouterOutlet, Platform } from '@ionic/angular';
+import { IonRouterOutlet, Platform } from '@ionic/angular';
 import { NativeService } from './providers/NativeService';
 import { Helper } from './providers/Helper';
 import { UserInfo } from './interfaces/UserInfo';
@@ -19,7 +19,6 @@ export class AppComponent {
 
     constructor(public platform: Platform,
                 public router: Router,
-                public events: Events,
                 public helper: Helper,
                 public native: NativeService,
                 public auth: AuthService) {
@@ -49,19 +48,8 @@ export class AppComponent {
             }
             this.native.setStatusBarStyle();
             this.native.hideSplashScreen();
-            this.androidBackButtonAction();
             // this.versionService.checkVersion();
         });
     }
-
-    androidBackButtonAction() {
-        if (!this.helper.isAndroid()) {
-            return;
-        }
-        this.platform.backButton.subscribe(() => {
-            this.events.publish('goBack');
-        });
-    }
-
 
 }

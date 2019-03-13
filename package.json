@@ -21,7 +21,6 @@
     "@angular/platform-browser": "^7.2.2",
     "@angular/platform-browser-dynamic": "^7.2.2",
     "@angular/router": "^7.2.2",
-    "@ionic-native/app-minimize": "^5.2.0",
     "@ionic-native/app-version": "^5.2.0",
     "@ionic-native/core": "^5.0.0",
     "@ionic-native/file": "^5.2.0",
@@ -80,7 +79,6 @@
         "ANDROID_SUPPORT_VERSION": "27.+"
       },
       "cordova-plugin-app-version": {},
-      "cordova-plugin-appminimize": {},
       "cordova-plugin-x-socialsharing": {
         "ANDROID_SUPPORT_V4_VERSION": "24.1.1+"
       },
