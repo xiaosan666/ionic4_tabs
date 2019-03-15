@@ -13,6 +13,7 @@ import { GlobalData } from './GlobalData';
 })
 export class Helper {
     readonly IsMobile: boolean = false;
+    private AlertIsExist = false;
     private LoadingIsExist = false;
     private Loading = null;
 
@@ -81,15 +82,18 @@ export class Helper {
      * @param cancelBtnFun 失败回调
      */
     alert(header = '', message = '', okBackFun = null, cancelBtnFun = null): void {
-        if (document.querySelector('.alert-wrapper')) {
-            Logger.log('alert已经存在');
+        if (this.AlertIsExist) { // alertController.create是异步方法，所以使用AlertIsExist标志是否打开
+            Logger.log('alert已经存在，禁止重复打开');
+            setTimeout(() => { // alert关闭的可能性比较多，不止点击确定或取消按钮
+                this.AlertIsExist = false;
+            }, 10000);
             return;
         }
+        this.AlertIsExist = true;
         const buttons = [{
             text: '确定', handler: () => {
-                if (okBackFun) {
-                    okBackFun();
-                }
+                this.AlertIsExist = false;
+                okBackFun && okBackFun();
             }
         }];
         if (cancelBtnFun) {
@@ -97,6 +101,7 @@ export class Helper {
                 text: '取消',
                 role: 'cancel',
                 handler: () => {
+                    this.AlertIsExist = false;
                     cancelBtnFun();
                 }
             };

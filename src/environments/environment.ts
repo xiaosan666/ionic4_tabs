@@ -7,7 +7,8 @@ export const environment = {
     appServerUrl: devServers.appServerUrl,
     fileServerUrl: devServers.fileServerUrl,
     requestTimeout: devServers.requestTimeout,
-    defaultAvatar: devServers.defaultAvatar
+    defaultAvatar: devServers.defaultAvatar,
+    rsaPublicKey: devServers.rsaPublicKey
 };
 
 /*

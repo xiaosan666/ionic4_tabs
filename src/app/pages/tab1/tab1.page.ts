@@ -5,6 +5,7 @@ import { Helper } from '../../providers/Helper';
 import { Logger } from '../../providers/Logger';
 import { HttpService } from '../../providers/HttpService';
 import { GlobalData } from '../../providers/GlobalData';
+import { Encrypt } from '../../providers/Encrypt';
 
 @Component({
     selector: 'app-tab1',
@@ -25,7 +26,7 @@ export class Tab1Page {
         this.http.post('/v1/login', {
             'client_id': 'app',
             'username': 'admin',
-            'password': Utils.md5('123456') // 123456 'e10adc3949ba59abbe56e057f20f883e'
+            'password': Encrypt.md5('123456') // 123456 'e10adc3949ba59abbe56e057f20f883e'
         }).subscribe(res => {
             GlobalData.token = res;
             console.log(res);

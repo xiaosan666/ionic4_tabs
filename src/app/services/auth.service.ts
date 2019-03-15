@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpService } from '../providers/HttpService';
-import { Utils } from '../providers/Utils';
 import { map, mergeMap } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
 import { GlobalData } from '../providers/GlobalData';
 import { FileService } from '../providers/FileService';
 import { ValidationErrors } from '@angular/forms';
+import { Encrypt } from '../providers/Encrypt';
 
 @Injectable({
     providedIn: 'root'
@@ -20,7 +20,7 @@ export class AuthService {
         return this.http.post('/v1/login', {
             'client_id': 'app',
             'username': username,
-            'password': Utils.md5(password)
+            'password': Encrypt.md5(password)
         });
     }
 
@@ -57,8 +57,8 @@ export class AuthService {
     // 修改密码
     modifyPassword(oldPsw: string, newPsw: string) {
         return this.http.postFormData('/v1/update_password', {
-            'old_password': Utils.md5(oldPsw),
-            'new_password': Utils.md5(newPsw)
+            'old_password': Encrypt.md5(oldPsw),
+            'new_password': Encrypt.md5(newPsw)
         });
     }
 

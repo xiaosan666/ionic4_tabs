@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Md5 } from 'ts-md5';
 
 /**
  * 工具类：存放和业务无关的公共方法
@@ -141,14 +140,6 @@ export class Utils {
             text += possible.charAt(Math.floor(Math.random() * possible.length));
         }
         return text + new Date().getTime();
-    }
-
-    /**
-     * 字符串md5加密
-     * npm install ts-md5 --save
-     */
-    static md5(str: string) {
-        return Md5.hashStr(str, false);
     }
 
     /**

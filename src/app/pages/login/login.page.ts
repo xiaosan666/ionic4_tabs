@@ -6,6 +6,7 @@ import { Storage } from '../../providers/Storage';
 import { Helper } from '../../providers/Helper';
 import { UserInfo } from '../../interfaces/UserInfo';
 import { NavController } from '@ionic/angular';
+import { HttpService } from '../../providers/HttpService';
 
 @Component({
     selector: 'app-login',
@@ -13,6 +14,7 @@ import { NavController } from '@ionic/angular';
     styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
+
     loading = false;
     model = {
         username: 'test',
@@ -21,6 +23,7 @@ export class LoginPage implements OnInit {
 
     constructor(public nav: NavController,
                 public helper: Helper,
+                public http: HttpService,
                 public auth: AuthService) {
     }
 

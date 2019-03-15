@@ -33,9 +33,10 @@
     "@ionic/angular": "^4.1.0",
     "cordova-android": "^7.1.4",
     "core-js": "^2.5.4",
+    "crypto-js": "^3.1.9-1",
     "es6-promise-plugin": "4.2.2",
+    "jsencrypt": "^3.0.0-rc.1",
     "rxjs": "~6.3.3",
-    "ts-md5": "^1.2.4",
     "zone.js": "~0.8.29"
   },
   "devDependencies": {

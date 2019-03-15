@@ -5,5 +5,6 @@ export const environment = {
     appServerUrl: prodServers.appServerUrl,
     fileServerUrl: prodServers.fileServerUrl,
     requestTimeout: prodServers.requestTimeout,
-    defaultAvatar: prodServers.defaultAvatar
+    defaultAvatar: prodServers.defaultAvatar,
+    rsaPublicKey: prodServers.rsaPublicKey
 };
