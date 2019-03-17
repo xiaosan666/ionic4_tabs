@@ -34,10 +34,13 @@ export class TabsPage implements OnInit {
 
     ngOnInit() {
         this.platform.backButton.subscribe(this.androidBackButtonHandle);
-        this.events.subscribe('goBack', this.androidBackButtonHandle);
+        this.events.subscribe('goBack', () => {
+            this.androidBackButtonHandle();
+        });
     }
 
     async androidBackButtonHandle() {
+        debugger;
         const canGoBack = this.tabs.outlet.canGoBack();
         console.log('canGoBack1:', this.tabs.outlet.canGoBack());
         try {
