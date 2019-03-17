@@ -21,7 +21,15 @@ import { Network } from '@ionic-native/network/ngx';
     imports: [
         BrowserModule,
         AppRoutingModule,
-        IonicModule.forRoot({mode: 'ios', backButtonText: '返回'}),
+        IonicModule.forRoot({
+            // https://ionicframework.com/docs/utilities/config
+            hardwareBackButton: true,
+            rippleEffect: false,
+            mode: 'ios',
+            backButtonText: '返回',
+            statusTap: true,
+            swipeBackEnabled: true
+        }),
         HttpClientModule
     ],
     providers: [

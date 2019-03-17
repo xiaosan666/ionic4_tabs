@@ -3,7 +3,7 @@
 // place your own config to that file
 
 export const devServers = {
-    appServerUrl: 'http://localhost:7772/api/',
+    appServerUrl: 'https://yanxiaojun617.com/invoice/api/',
     fileServerUrl: 'https://yanxiaojun617.com/fileService/',
     requestTimeout: 20000,
     defaultAvatar: './assets/avatar/default.png',

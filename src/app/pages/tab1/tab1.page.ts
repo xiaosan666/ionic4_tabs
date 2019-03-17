@@ -6,6 +6,7 @@ import { Logger } from '../../providers/Logger';
 import { HttpService } from '../../providers/HttpService';
 import { GlobalData } from '../../providers/GlobalData';
 import { Encrypt } from '../../providers/Encrypt';
+import { Events } from '@ionic/angular';
 
 @Component({
     selector: 'app-tab1',
@@ -16,6 +17,7 @@ export class Tab1Page {
 
     constructor(public native: NativeService,
                 public helper: Helper,
+                public events: Events,
                 public http: HttpService) {
         console.log(Utils.dateFormat(new Date(), 'yyyy-MM-ddTHH:mm:ss+08:00'));
         Logger.log(111);
@@ -57,6 +59,10 @@ export class Tab1Page {
         this.http.get('/v1/demo/map_result_get2', {param: 1}).subscribe(res => {
             console.log(res);
         });
+    }
+
+    back() {
+        this.events.publish('goBack');
     }
 
 }
