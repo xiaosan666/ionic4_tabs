@@ -8,6 +8,7 @@ import { Storage } from './providers/Storage';
 import { GlobalData } from './providers/GlobalData';
 import { AuthService } from './services/auth.service';
 import { mergeMap } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-root',
@@ -18,10 +19,17 @@ export class AppComponent {
 
     constructor(public platform: Platform,
                 public nav: NavController,
+                public router: Router,
                 public helper: Helper,
                 public native: NativeService,
                 public auth: AuthService) {
         this.initializeApp();
+        // 处理安卓返回按钮事件，更多情况请看 tabs.page.ts
+        this.platform.backButton.subscribe(() => {
+            if (this.router.url === '/login' && !GlobalData.token) {
+                this.native.appMinimize();
+            }
+        });
     }
 
     initializeApp() {

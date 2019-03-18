@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import JsEncrypt from 'jsencrypt';
-import CryptoJS from 'crypto-js';
 import { environment } from '../../environments/environment';
+import * as CryptoJS from 'crypto-js';
 
 /**
  * 加密工具类

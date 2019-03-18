@@ -1,0 +1,58 @@
+{
+  "_from": "cordova-plugin-appminimize",
+  "_id": "cordova-plugin-appminimize@1.0.1",
+  "_inBundle": false,
+  "_integrity": "sha512-UJZ5g8iFBP42EplS0gKwAQhwr9cUfur95o6w+2NW21pjbgioj1RVZddngy7dO++ABDpkd4HMPYnJw7DqMp5rww==",
+  "_location": "/cordova-plugin-appminimize",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "cordova-plugin-appminimize",
+    "name": "cordova-plugin-appminimize",
+    "escapedName": "cordova-plugin-appminimize",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/cordova-plugin-appminimize/-/cordova-plugin-appminimize-1.0.1.tgz",
+  "_shasum": "cea84b93c5d95ba9ebf7a91180c7893beaa3425a",
+  "_spec": "cordova-plugin-appminimize",
+  "_where": "C:\\workspace\\app\\ionic4_tabs",
+  "author": {
+    "name": "tomloprod"
+  },
+  "bugs": {
+    "url": "https://github.com/tomloprod/cordova-plugin-appminimize/issues"
+  },
+  "bundleDependencies": false,
+  "cordova": {
+    "id": "cordova-plugin-appminimize",
+    "platforms": [
+      "android"
+    ]
+  },
+  "deprecated": false,
+  "description": "This is a cordova plugin to minimizes the application in android devices.",
+  "homepage": "https://github.com/tomloprod/cordova-plugin-appminimize#readme",
+  "keywords": [
+    "cordova",
+    "ionic",
+    "minimize",
+    "android"
+  ],
+  "license": "MIT",
+  "name": "cordova-plugin-appminimize",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tomloprod/cordova-plugin-appminimize.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "1.0.1"
+}

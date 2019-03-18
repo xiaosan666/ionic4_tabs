@@ -10,7 +10,6 @@ import {
 } from '@ionic/angular';
 import { Helper } from '../../providers/Helper';
 import { NativeService } from '../../providers/NativeService';
-import { logger } from 'codelyzer/util/logger';
 
 @Component({
     selector: 'app-tabs',
@@ -33,16 +32,14 @@ export class TabsPage implements OnInit {
     }
 
     ngOnInit() {
-        this.platform.backButton.subscribe(this.androidBackButtonHandle);
-        this.events.subscribe('goBack', () => {
+        this.platform.backButton.subscribe(() => {
             this.androidBackButtonHandle();
         });
     }
 
     async androidBackButtonHandle() {
-        debugger;
-        const canGoBack = this.tabs.outlet.canGoBack();
-        console.log('canGoBack1:', this.tabs.outlet.canGoBack());
+        const tabsCanGoBack = this.tabs.outlet.canGoBack();
+        const tabsParentCanGoBack = this.tabs.outlet.parentOutlet.canGoBack();
         try {
             const alert = await this.alertCtrl.getTop();
             if (alert) {
@@ -69,14 +66,9 @@ export class TabsPage implements OnInit {
                 this.menuCtrl.close();
                 return;
             }
-            if (!canGoBack) {
-                // this.native.appMinimize();
-                console.log('最小化');
+            if (!tabsCanGoBack && !tabsParentCanGoBack) {
+                this.native.appMinimize();
             }
-            if (this.tabs.outlet.canGoBack()) {
-                this.tabs.outlet.pop();
-            }
-            console.log('canGoBack2:', this.tabs.outlet.canGoBack());
         } catch (error) {
         }
     }

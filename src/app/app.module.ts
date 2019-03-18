@@ -14,6 +14,7 @@ import { SocialSharing } from '@ionic-native/social-sharing/ngx';
 import { PhotoLibrary } from '@ionic-native/photo-library/ngx';
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 import { Network } from '@ionic-native/network/ngx';
+import { AppMinimize } from '@ionic-native/app-minimize/ngx';
 
 @NgModule({
     declarations: [AppComponent],
@@ -33,6 +34,7 @@ import { Network } from '@ionic-native/network/ngx';
         HttpClientModule
     ],
     providers: [
+        {provide: RouteReuseStrategy, useClass: IonicRouteStrategy},
         StatusBar,
         SplashScreen,
         AppVersion,
@@ -40,7 +42,7 @@ import { Network } from '@ionic-native/network/ngx';
         PhotoLibrary,
         InAppBrowser,
         Network,
-        {provide: RouteReuseStrategy, useClass: IonicRouteStrategy}
+        AppMinimize
     ],
     bootstrap: [AppComponent]
 })

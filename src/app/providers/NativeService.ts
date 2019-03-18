@@ -6,6 +6,7 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { AppVersion } from '@ionic-native/app-version/ngx';
 import { SocialSharing } from '@ionic-native/social-sharing/ngx';
+import { AppMinimize } from '@ionic-native/app-minimize/ngx';
 import { PhotoLibrary } from '@ionic-native/photo-library/ngx';
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 import { Network } from '@ionic-native/network/ngx';
@@ -25,6 +26,7 @@ export class NativeService {
                 private splashScreen: SplashScreen,
                 private appVersion: AppVersion,
                 private socialSharing: SocialSharing,
+                private minimize: AppMinimize,
                 private photoLibrary: PhotoLibrary,
                 private iab: InAppBrowser,
                 private network: Network,
@@ -52,6 +54,13 @@ export class NativeService {
         if (this.helper.isMobile()) {
             this.splashScreen.hide();
         }
+    }
+
+    /**
+     * 最小化app
+     */
+    appMinimize() {
+        this.minimize.minimize();
     }
 
     /**

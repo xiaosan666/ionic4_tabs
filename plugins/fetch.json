@@ -116,5 +116,13 @@
     },
     "is_top_level": true,
     "variables": {}
+  },
+  "cordova-plugin-appminimize": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-appminimize"
+    },
+    "is_top_level": true,
+    "variables": {}
   }
 }
