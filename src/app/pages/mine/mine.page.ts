@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { NativeService } from '../../../providers/NativeService';
-import { Helper } from '../../../providers/Helper';
 import { Router } from '@angular/router';
 import { Events } from '@ionic/angular';
+import { Helper } from '../../providers/Helper';
+import { NativeService } from '../../providers/NativeService';
 
 @Component({
-    selector: 'app-mine-home',
-    templateUrl: './mine-home.page.html',
-    styleUrls: ['./mine-home.page.scss'],
+    selector: 'app-mine',
+    templateUrl: './mine.page.html',
+    styleUrls: ['./mine.page.scss'],
 })
-export class MineHomePage implements OnInit {
+export class MinePage implements OnInit {
 
     constructor(public helper: Helper,
                 public router: Router,
@@ -35,10 +35,7 @@ export class MineHomePage implements OnInit {
     }
 
     login() {
-        this.helper.alert('提示', '确定重新登录吗？', () => {
-            this.router.navigateByUrl('/login');
-        }, () => {
-        });
+        this.router.navigateByUrl('/login');
     }
 
 }

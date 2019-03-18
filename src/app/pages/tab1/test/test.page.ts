@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Events } from '@ionic/angular';
+import { Events, NavController } from '@ionic/angular';
 
 @Component({
     selector: 'app-test',
@@ -8,13 +8,13 @@ import { Events } from '@ionic/angular';
 })
 export class TestPage implements OnInit {
 
-    constructor(public events: Events) {
+    constructor(public events: Events, public nav: NavController) {
     }
 
     ngOnInit() {
     }
 
-    goBack() {
-        this.events.publish('goBack');
+    back() {
+        this.nav.pop();
     }
 }

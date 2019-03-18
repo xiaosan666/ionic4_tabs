@@ -1,0 +1,55 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>我的</ion-title>
+    <ion-buttons slot="end">
+      <ion-button color="dark" (click)="getPictures()">
+        <ion-icon name="camera" style="font-size: 1.6em"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list lines="none">
+    <ion-item detail tappable class="mine-header" routerLink="/tabs/mine/info">
+      <ion-thumbnail slot="start">
+        <img src="./assets/avatar/default.png" alt="头像">
+      </ion-thumbnail>
+      <ion-label>
+        <h2>小军617</h2>
+        <p>18688498342</p>
+      </ion-label>
+      <ion-icon src="./assets/icon/QR-code.svg" slot="end"></ion-icon>
+    </ion-item>
+  </ion-list>
+
+  <ion-list>
+    <ion-item detail tappable routerLink="/tabs/mine/modify-password">
+      <ion-button slot="start" fill="clear">
+        <ion-icon slot="icon-only" name="finger-print" style="color:#3171e0"></ion-icon>
+      </ion-button>
+      <ion-label>修改密码</ion-label>
+    </ion-item>
+    <ion-item detail tappable routerLink="/tabs/mine/about">
+      <ion-button slot="start" fill="clear">
+        <ion-icon slot="icon-only" name="information-circle-outline" style="color:#08c161"></ion-icon>
+      </ion-button>
+      <ion-label>关于</ion-label>
+    </ion-item>
+  </ion-list>
+
+  <ion-list>
+    <ion-item tappable (click)="login()">
+      <ion-button slot="start" fill="clear">
+        <ion-icon slot="icon-only" name="refresh" style="color:#666"></ion-icon>
+      </ion-button>
+      <ion-label>重新登录</ion-label>
+    </ion-item>
+    <ion-item tappable (click)="logout()">
+      <ion-button slot="start" fill="clear">
+        <ion-icon slot="icon-only" name="log-out" style="color:#666"></ion-icon>
+      </ion-button>
+      <ion-label>退出软件</ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>

@@ -1,0 +1,187 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      from
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form (ngSubmit)="onSubmit()" #ngForm="ngForm" class="myForm">
+    <ion-list>
+
+      <ion-item>
+        <ion-label required>用户名</ion-label>
+        <ion-input type="text" name="username" placeholder="请输入用户名（必填）" [(ngModel)]="model.username"
+                   #username="ngModel" required validator-regular="legallyNamed" validator-username-exist
+                   autocomplete="off"></ion-input>
+        <ion-spinner name="bubbles" item-end *ngIf="username.pending"></ion-spinner>
+      </ion-item>
+      <div *ngIf="username.invalid && username.dirty" class="form-invalid-tip">
+        <div *ngIf="username.errors.required">用户名是必填项</div>
+        <div *ngIf="username.errors.legallyNamed">用户名只能是4到20位长度的英文或数字</div>
+        <div *ngIf="username.errors.exist">用户名已经存在</div>
+      </div>
+
+      <ion-item>
+        <ion-label required>密码</ion-label>
+        <ion-input type="password" name="password" placeholder="请输入密码（必填）"
+                   [(ngModel)]="model.password"
+                   #password="ngModel" required pattern=".{6,20}" autocomplete="off"></ion-input>
+      </ion-item>
+      <div *ngIf="password.invalid && password.dirty" class="form-invalid-tip">
+        <div *ngIf="password.errors.required">密码是必填项</div>
+        <div *ngIf="password.errors.pattern">密码长度为6到20位</div>
+      </div>
+
+      <ion-item>
+        <ion-label required>手机号码</ion-label>
+        <ion-input type="number" name="phone" placeholder="请输入11位手机号码（必填）" [(ngModel)]="model.phone"
+                   #phone="ngModel"
+                   required pattern="1[0-9]{10}"></ion-input>
+      </ion-item>
+      <div *ngIf="phone.invalid && phone.dirty" class="form-invalid-tip">
+        <div *ngIf="phone.errors.required">手机号码是必填项</div>
+        <div *ngIf="phone.errors.pattern">手机号码输入不合法</div>
+      </div>
+
+
+      <ion-item>
+        <ion-label>真实姓名</ion-label>
+        <ion-input type="text" name="name" placeholder="真实姓名必须是中文" [(ngModel)]="model.name" #name="ngModel"
+                   pattern="[\u4e00-\u9fa5]{2,4}"></ion-input>
+      </ion-item>
+      <div *ngIf="name.invalid && name.dirty" class="form-invalid-tip">
+        <div *ngIf="name.errors.pattern">只能是2到6位长度中文字符</div>
+      </div>
+
+      <ion-item>
+        <ion-label>生日</ion-label>
+        <ion-datetime name="birthday" placeholder="请选择生日" [max]="today" [(ngModel)]="model.birthday"
+                      displayFormat="YYYY-MM-DD" cancelText="取消" doneText="确定"></ion-datetime>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>婚姻状态</ion-label>
+        <ion-input placeholder="请选择婚姻状态"
+                   [value]="model.isMarried?'已婚':(model.isMarried===false?'未婚':'')"></ion-input>
+        <ion-toggle name="isMarried" [(ngModel)]="model.isMarried"></ion-toggle>
+      </ion-item>
+    </ion-list>
+    <div margin>
+      <ion-button type="reset" outline (click)="reset();ngForm.reset()">清空</ion-button>
+      <ion-button type="button" outline (click)="setData()">设置数据</ion-button>
+      <ion-button type="submit" [disabled]="!ngForm.form.valid">提交</ion-button>
+      <ion-button type="button" outline (click)="formValidation()">复杂的表单验证demo</ion-button>
+      <ion-button block (click)="details('https://www.jianshu.com/p/2f068c1d46bf')">简书详情</ion-button>
+    </div>
+    <ion-list>
+      <ion-item>
+        <ion-label>学历</ion-label>
+        <ion-select name="education" placeholder="请选择学历" [(ngModel)]="model.education" cancelText="取消"
+                    okText="确定">
+          <ion-select-option value="1">小学</ion-select-option>
+          <ion-select-option value="2">初中</ion-select-option>
+          <ion-select-option value="3">高中</ion-select-option>
+          <ion-select-option value="4">本科</ion-select-option>
+          <ion-select-option value="5">研究生</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>性别</ion-label>
+        <ion-select name="sex" placeholder="请选择性别" [(ngModel)]="model.sex" interface="popover">
+          <ion-select-option value="1">男</ion-select-option>
+          <ion-select-option value="2">女</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>性别</ion-label>
+        <div item-content class="form-item-content">
+          <div class="form-radio" tappable (click)="model.sex='1'">
+            <ion-icon [name]="model.sex=='1'?'radio-button-on':'radio-button-off'"
+                      color="primary"></ion-icon>
+            <span>男</span>
+          </div>
+          <div class="form-radio" tappable (click)="model.sex='2'">
+            <ion-icon [name]="model.sex=='2'?'radio-button-on':'radio-button-off'"
+                      color="primary"></ion-icon>
+            <span>女</span>
+          </div>
+        </div>
+      </ion-item>
+
+      <ion-item class="form-item">
+        <ion-label>爱好</ion-label>
+        <div item-content class="form-item-content">
+          <div class="form-checkbox" *ngFor="let item of hobby" tappable
+               (click)="hobbyCheckboxClick(item.value)">
+            <ion-icon [name]="model.hobby&&model.hobby.indexOf(item.value)>-1?'checkbox':'square-outline'"
+                      color="primary"></ion-icon>
+            <span>{{item.name}}</span>
+          </div>
+        </div>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>游戏</ion-label>
+        <ion-select name="games" placeholder="请选择您爱玩的游戏" [(ngModel)]="model.games" multiple cancelText="取消"
+                    okText="确定">
+          <ion-select-option *ngFor="let item of games" value="{{item.value}}">{{item.name}}
+          </ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label class="too-long">太长了换行显示</ion-label>
+        <div item-content class="form-item-content">
+          <div class="form-number-step">
+            <ion-icon name="remove" tappable
+                      (click)="(model.tooth>0)&&(model.tooth=model.tooth-1)"></ion-icon>
+            <input type="number" name="tooth" value="0" [(ngModel)]="model.tooth" readonly>
+            <ion-icon name="add" tappable (click)="model.tooth=model.tooth+1"></ion-icon>
+          </div>
+        </div>
+      </ion-item>
+
+      <ion-item>
+        <ion-label class="too-long">个人简介</ion-label>
+        <div item-content class="form-item-content">
+          <div class="form-textarea" [ngClass]="{'form-textarea-placeholder': !model.intro}" name="intro"
+               [(ngModel)]="model.intro" appContentEditable="true"></div>
+        </div>
+      </ion-item>
+
+    </ion-list>
+
+    <ion-list>
+      <form #testForm="ngForm" validator-password-identical>
+        <ion-list>
+          <ion-item>
+            <ion-label required>密码</ion-label>
+            <ion-input type="password" name="password" autocomplete="off" placeholder="请输入密码（必填）"
+                       [(ngModel)]="model.password" #password="ngModel" required
+                       pattern=".{6,20}"></ion-input>
+          </ion-item>
+          <div *ngIf="password.invalid && password.dirty" class="form-invalid-tip">
+            <div *ngIf="password.errors.required">密码是必填项</div>
+            <div *ngIf="password.errors.pattern">密码长度为6到20位</div>
+          </div>
+          <ion-item>
+            <ion-label class="too-long">再次输入密码</ion-label>
+            <ion-input type="password" name="newPassword" autocomplete="off" placeholder="请输入密码（必填）"
+                       [(ngModel)]="model.newPassword" #newPassword="ngModel"></ion-input>
+          </ion-item>
+          <div *ngIf="newPassword.dirty" class="form-invalid-tip">
+            <div *ngIf="testForm.errors?.passwordInvalid">两次密码输入不一致</div>
+          </div>
+        </ion-list>
+      </form>
+    </ion-list>
+
+  </form>
+</ion-content>

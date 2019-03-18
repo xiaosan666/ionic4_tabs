@@ -1,19 +1,15 @@
-import { Component } from '@angular/core';
-import { NativeService } from '../../providers/NativeService';
-import { Utils } from '../../providers/Utils';
-import { Helper } from '../../providers/Helper';
+import { Component, OnInit } from '@angular/core';
+import { NativeService } from '../../../providers/NativeService';
+import { Helper } from '../../../providers/Helper';
+import { Utils } from '../../../providers/Utils';
 
 @Component({
-    selector: 'app-tab2',
-    templateUrl: 'tab2.page.html',
-    styleUrls: ['tab2.page.scss']
+    selector: 'app-form',
+    templateUrl: './form.page.html',
+    styleUrls: ['./form.page.scss'],
 })
-export class Tab2Page {
+export class FormPage implements OnInit {
     isIos;
-
-    constructor(public native: NativeService, public helper: Helper) {
-        this.isIos = this.helper.isIos();
-    }
 
     today = Utils.dateFormat(new Date());
 
@@ -52,6 +48,13 @@ export class Tab2Page {
         {value: 4, name: '血战上海滩'},
         {value: 5, name: '斗地主'}
     ];
+
+    constructor(public native: NativeService, public helper: Helper) {
+        this.isIos = this.helper.isIos();
+    }
+
+    ngOnInit() {
+    }
 
 
     onSubmit() {

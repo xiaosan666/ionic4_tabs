@@ -61,8 +61,4 @@ export class Tab1Page {
         });
     }
 
-    back() {
-        this.events.publish('goBack');
-    }
-
 }
