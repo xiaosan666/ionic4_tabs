@@ -18,7 +18,6 @@ const routes: Routes = [
         path: 'tabs',
         component: TabsPage,
         children: [
-            {path: '', redirectTo: '/tabs/tab1', pathMatch: 'full'},
             {path: 'tab1', component: Tab1Page},
             ...tab1Routes,
             {path: 'demo', component: DemoPage},

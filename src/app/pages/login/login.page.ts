@@ -14,7 +14,7 @@ import { HttpService } from '../../providers/HttpService';
     styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
-
+    showBackButton = false;
     loading = false;
     model = {
         username: 'test',
@@ -28,6 +28,9 @@ export class LoginPage implements OnInit {
     }
 
     ngOnInit() {
+        if (GlobalData.token) {
+            this.showBackButton = true;
+        }
     }
 
     formSubmit() {

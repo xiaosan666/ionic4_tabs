@@ -39,10 +39,10 @@ export class NativeService {
      */
     setStatusBarStyle(): void {
         if (this.helper.isMobile()) {
-            this.statusBar.overlaysWebView(false);
-            this.statusBar.styleLightContent();
-            // this.statusBar.styleDefault(); // 使用黑色字体
-            // this.statusBar.backgroundColorByHexString('#488aff'); // 设置背景色
+            // this.statusBar.overlaysWebView(false);
+            // this.statusBar.styleLightContent();
+            this.statusBar.styleDefault(); // 使用黑色字体
+            this.statusBar.backgroundColorByHexString('#fff'); // 设置背景色
         }
     }
 

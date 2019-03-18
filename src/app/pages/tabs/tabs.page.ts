@@ -18,6 +18,8 @@ import { NativeService } from '../../providers/NativeService';
 })
 export class TabsPage implements OnInit {
     @ViewChild('tabs') tabs: IonTabs;
+    tabsCanGoBack = false;
+    tabsParentCanGoBack = false;
 
     constructor(public platform: Platform,
                 public events: Events,
@@ -32,41 +34,45 @@ export class TabsPage implements OnInit {
     }
 
     ngOnInit() {
-        this.platform.backButton.subscribe(async () => {
-            const tabsCanGoBack = this.tabs.outlet.canGoBack();
-            const tabsParentCanGoBack = this.tabs.outlet.parentOutlet.canGoBack();
-            try {
-                const alert = await this.alertCtrl.getTop();
-                if (alert) {
-                    alert.dismiss();
-                    return;
-                }
-                const action = await this.actionSheetCtrl.getTop();
-                if (action) {
-                    action.dismiss();
-                    return;
-                }
-                const popover = await this.popoverCtrl.getTop();
-                if (popover) {
-                    popover.dismiss();
-                    return;
-                }
-                const modal = await this.modalCtrl.getTop();
-                if (modal) {
-                    modal.dismiss();
-                    return;
-                }
-                const isOpen = await this.menuCtrl.isOpen();
-                if (isOpen) {
-                    this.menuCtrl.close();
-                    return;
-                }
-                if (!tabsCanGoBack && !tabsParentCanGoBack) {
-                    this.native.appMinimize();
-                    return;
-                }
-            } catch (error) {
-            }
+        this.platform.backButton.subscribe(() => {
+            this.tabsCanGoBack = this.tabs.outlet.canGoBack();
+            this.tabsParentCanGoBack = this.tabs.outlet.parentOutlet.canGoBack();
+            this.androidBackButtonHandle();
         });
+    }
+
+    async androidBackButtonHandle() {
+        try {
+            const alert = await this.alertCtrl.getTop();
+            if (alert) {
+                alert.dismiss();
+                return;
+            }
+            const action = await this.actionSheetCtrl.getTop();
+            if (action) {
+                action.dismiss();
+                return;
+            }
+            const popover = await this.popoverCtrl.getTop();
+            if (popover) {
+                popover.dismiss();
+                return;
+            }
+            const modal = await this.modalCtrl.getTop();
+            if (modal) {
+                modal.dismiss();
+                return;
+            }
+            const isOpen = await this.menuCtrl.isOpen();
+            if (isOpen) {
+                this.menuCtrl.close();
+                return;
+            }
+            if (!this.tabsCanGoBack && !this.tabsParentCanGoBack) {
+                this.native.appMinimize();
+                return;
+            }
+        } catch (error) {
+        }
     }
 }
