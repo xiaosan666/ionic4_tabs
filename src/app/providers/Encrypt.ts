@@ -77,11 +77,12 @@ export class Encrypt {
         }
         const parseStr = CryptoJS.enc.Utf8.parse(str);
         const parseKey = CryptoJS.enc.Utf8.parse(key);
-        return CryptoJS.AES.encrypt(parseStr, parseKey, {
+        const aesEncrypt = CryptoJS.AES.encrypt(parseStr, parseKey, {
             iv: parseKey,
             mode: CryptoJS.mode.CBC,
             padding: CryptoJS.pad.Pkcs7
         }).toString();
+        return window.btoa(aesEncrypt);
     }
 
     /**
@@ -92,7 +93,7 @@ export class Encrypt {
      */
     static aesDecrypt(str: string, key: string) {
         const parseKey = CryptoJS.enc.Utf8.parse(key);
-        return CryptoJS.AES.decrypt(str, parseKey, {
+        return CryptoJS.AES.decrypt(window.atob(str), parseKey, {
             iv: parseKey,
             mode: CryptoJS.mode.CBC,
             padding: CryptoJS.pad.Pkcs7
