@@ -1,6 +1,6 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 
-import { IonRouterOutlet, NavController, Platform } from '@ionic/angular';
+import { NavController, Platform } from '@ionic/angular';
 import { NativeService } from './providers/NativeService';
 import { Helper } from './providers/Helper';
 import { UserInfo } from './interfaces/UserInfo';
@@ -15,7 +15,6 @@ import { Router } from '@angular/router';
     templateUrl: 'app.component.html'
 })
 export class AppComponent {
-    @ViewChild(IonRouterOutlet) routerOutlet: IonRouterOutlet;
 
     constructor(public platform: Platform,
                 public nav: NavController,

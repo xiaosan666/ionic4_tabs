@@ -15,9 +15,13 @@ import { PhotoLibrary } from '@ionic-native/photo-library/ngx';
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 import { Network } from '@ionic-native/network/ngx';
 import { AppMinimize } from '@ionic-native/app-minimize/ngx';
+import { TabsPage } from './pages/tabs/tabs.page';
+import { Tab1Page } from './pages/tab1/tab1.page';
+import { DemoPage } from './pages/demo/demo.page';
+import { MinePage } from './pages/mine/mine.page';
 
 @NgModule({
-    declarations: [AppComponent],
+    declarations: [AppComponent, TabsPage, Tab1Page, DemoPage, MinePage],
     entryComponents: [],
     imports: [
         BrowserModule,

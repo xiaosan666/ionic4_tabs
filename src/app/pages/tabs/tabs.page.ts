@@ -30,13 +30,15 @@ export class TabsPage implements OnInit {
                 public menuCtrl: MenuController,
                 public actionSheetCtrl: ActionSheetController,
                 public popoverCtrl: PopoverController) {
-
     }
 
     ngOnInit() {
+        console.log('tabs.page.ts 111111111111');
         this.platform.backButton.subscribe(() => {
             this.tabsCanGoBack = this.tabs.outlet.canGoBack();
             this.tabsParentCanGoBack = this.tabs.outlet.parentOutlet.canGoBack();
+            console.log(this.tabsCanGoBack);
+            console.log(this.tabsParentCanGoBack);
             this.androidBackButtonHandle();
         });
     }
