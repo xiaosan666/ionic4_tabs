@@ -44,7 +44,7 @@ export class LoginPage implements OnInit {
         ).subscribe((userInfo: UserInfo) => {
             this.loading = false;
             this.helper.loginSuccessHandle(userInfo);
-            this.nav.navigateRoot('/');
+            this.nav.navigateRoot('/tabs/tab1');
         }, () => {
             this.loading = false;
         });

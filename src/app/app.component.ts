@@ -44,7 +44,7 @@ export class AppComponent {
                     })
                 ).subscribe((userInfo: UserInfo) => {
                     this.helper.loginSuccessHandle(userInfo);
-                    // this.nav.navigateRoot('/'); // 会根据url自动匹配路由
+                    this.nav.navigateRoot('/tabs/tab1'); // 会根据url自动匹配路由
                 }, () => {
                     this.nav.navigateRoot('/login');
                 });
