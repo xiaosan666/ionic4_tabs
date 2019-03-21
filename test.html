@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>crypto-js</title>
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script type="text/javascript" src="../node_modules/crypto-js/crypto-js.js"></script>
+    <script type="text/javascript">
+
+        var key = CryptoJS.enc.Utf8.parse("fa9353c6179dfbfa");
+        var iv = CryptoJS.enc.Utf8.parse("fa9353c6179dfbfa");
+
+        //aes加密
+        function encrypt(context) {
+            var encrypted = '';
+            if (typeof(context) == 'string') {
+
+            } else if (typeof(context) == 'object') {
+                context = JSON.stringify(context);
+            }
+            var srcs = CryptoJS.enc.Utf8.parse(context);
+            encrypted = CryptoJS.AES.encrypt(srcs, key, {
+                iv: iv,
+                mode: CryptoJS.mode.CBC,
+                padding: CryptoJS.pad.Pkcs7
+            });
+            return encrypted.toString();
+        }
+
+        // aes解密
+        function decrypt(context) {
+            var decrypt = CryptoJS.AES.decrypt(context, key, {
+                iv: iv,
+                mode: CryptoJS.mode.CBC,
+                padding: CryptoJS.pad.Pkcs7
+            });
+            var decryptedStr = decrypt.toString(CryptoJS.enc.Utf8);
+            return decryptedStr.toString();
+        }
+
+
+        function getAES() {
+            var jiamibefore = $("#jiamibefore").val();
+            var jiamiafter = encrypt(jiamibefore);
+            $("#jiamiafter").val(jiamiafter);
+        }
+
+        function getDAes() {
+            var jiemibefore = $("#jiemibefore").val();
+            var jiemiafter = decrypt(jiemibefore);
+            $("#jiemiafter").val(jiemiafter);
+        }
+    </script>
+</head>
+<body>
+<div>
+    加密前：<input type="text" id="jiamibefore" value="测试123"/>
+    <input type="button" name="" value="AES加密" onclick="getAES();"/>
+    加密后：<input type="text" id="jiamiafter" readonly="readonly"/>
+
+    <br>
+
+    解密前：<input type="text" id="jiemibefore"/>
+    <input type="button" name="" value="AES解密" onclick="getDAes();"/>
+    解密后：<input type="text" id="jiemiafter" readonly="readonly"/>
+</div>
+
+</body>
+</html>

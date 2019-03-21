@@ -7,6 +7,7 @@ import { HttpService } from '../../providers/HttpService';
 import { GlobalData } from '../../providers/GlobalData';
 import { Encrypt } from '../../providers/Encrypt';
 import { Events } from '@ionic/angular';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-tab1',
@@ -18,6 +19,7 @@ export class Tab1Page {
     constructor(public native: NativeService,
                 public helper: Helper,
                 public events: Events,
+                public router: Router,
                 public http: HttpService) {
         console.log(Utils.dateFormat(new Date(), 'yyyy-MM-ddTHH:mm:ss+08:00'));
         Logger.log(111);
@@ -59,6 +61,14 @@ export class Tab1Page {
         this.http.get('/v1/demo/map_result_get2', {param: 1}).subscribe(res => {
             console.log(res);
         });
+    }
+
+    next() {
+        this.router.navigate(['/tabs/tab1/test'], {queryParams: {page: 1, size: 110}});
+    }
+
+    nextTest2() {
+        this.router.navigate(['/tabs/tab1/test2', 2], {queryParams: {page: 1, size: 110}});
     }
 
 }
