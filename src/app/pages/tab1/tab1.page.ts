@@ -38,37 +38,12 @@ export class Tab1Page {
     }
 
 
-    get() {
-        this.http.get('/v1/public/user/self').subscribe(res => {
-            console.log(res);
-        });
-    }
-
-
-    articleList() {
-        this.http.post('/v1/article/view/list').subscribe(res => {
-            console.log(res);
-        });
-    }
-
     test() {
-        this.http.get('/v1/demo/list_param', {ids: [1, 2]}).subscribe(res => {
-            console.log(res);
-        });
+        this.router.navigateByUrl('/tabs/tab1/test', {queryParams: {page: 1, size: 10}});
     }
 
     test2() {
-        this.http.get('/v1/demo/map_result_get2', {param: 1}).subscribe(res => {
-            console.log(res);
-        });
-    }
-
-    next() {
-        this.router.navigate(['/tabs/tab1/test'], {queryParams: {page: 1, size: 110}});
-    }
-
-    nextTest2() {
-        this.router.navigate(['/tabs/tab1/test2', 2], {queryParams: {page: 1, size: 110}});
+        this.router.navigate(['/tabs/tab1/test2', 2], {queryParams: {page: 1, size: 10}});
     }
 
 }

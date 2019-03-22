@@ -17,20 +17,14 @@ export class TestPage implements OnInit {
 
     ngOnInit() {
         const queryParams = this.route.snapshot.queryParams;
+        console.log(queryParams);
         this.route.queryParams.subscribe(res => {
-            debugger;
+            console.log(queryParams);
         });
-
-        const r = this.route;
-        debugger;
     }
 
     back() {
         this.nav.pop();
     }
 
-    back2() {
-        this.router.navigate(['/tabs/tab1'], {queryParams: {page: 1, size: 10}});
-        // this.router.navigateByUrl('/tabs/tab1');
-    }
 }

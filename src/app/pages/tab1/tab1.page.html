@@ -8,15 +8,8 @@
 
 <ion-content>
     <ion-button (click)="post()">post</ion-button>
-    <ion-button (click)="get()">get</ion-button>
-    <ion-spinner name="dots"></ion-spinner>
-
-    <ion-button (click)="articleList()">articleList</ion-button>
-    <ion-button (click)="test()">test</ion-button>
-    <ion-button (click)="test2()">test2</ion-button>
-    <ion-button routerLink="/tabs/tab1/test">next page</ion-button>
-    <ion-button [routerLink]="['/tabs/tab1/test']">next page</ion-button>
-    <ion-button (click)="next()">next page</ion-button>
-    <ion-button (click)="nextTest2()">next test2</ion-button>
-    <ion-button [routerLink]="['/tabs/tab1/test2',3]">next test2</ion-button>
+    <ion-button routerLink="/tabs/tab1/test">test page</ion-button>
+    <ion-button (click)="test()">test page</ion-button>
+    <ion-button [routerLink]="['/tabs/tab1/test2',2]">test2 page</ion-button>
+    <ion-button (click)="test2()">test2 page</ion-button>
 </ion-content>
