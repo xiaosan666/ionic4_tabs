@@ -4,12 +4,13 @@ import { environment } from '../../environments/environment';
 import * as CryptoJS from 'crypto-js';
 
 /**
+ * 简书文章：
+ * https://www.jianshu.com/p/b45d835b201b
+ *
  * 加密工具类
  * rsa非对称加密
  *  针对敏感数据，前端使用此方法加密后传递给后端，后端使用私钥解密
  *  公钥保存在前端，私钥保存在后端，不进行传输
- *  前端：https://github.com/travist/jsencrypt
- *  后端：https://blog.csdn.net/baidu_38990811/article/details/83540404?tdsourcetag=s_pcqq_aiomsg
  *  @example
  const publicKey = 'MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCoYxMpKFXbyiehp9ktu+dDlcSp9UZnRFEdYiMPvqzrU6grokp/g3uijsXZN1cZbQc4LSSRvLnC/SIwZRxA2i5H9MQOBlM9qhBXFcAlinsfY3PE4LNlbYvLT5F9G/sbSP8VunzFnQdj6CPtLABnAinAtEZ8krNVPLpLGmzJfR/mzwIDAQAB';
  const privateKey = 'MIICdQIBADANBgkqhkiG9w0BAQEFAASCAl8wggJbAgEAAoGBAKhjEykoVdvKJ6Gn2S2750OVxKn1RmdEUR1iIw++rOtTqCuiSn+De6KOxdk3VxltBzgtJJG8ucL9IjBlHEDaLkf0xA4GUz2qEFcVwCWKex9jc8Tgs2Vti8tPkX0b+xtI/xW6fMWdB2PoI+0sAGcCKcC0RnySs1U8uksabMl9H+bPAgMBAAECgYBlvvfk9qpqlEw+Md3Y9KFZBTZAPCS+YVliF9p3uQ9jYrlLJFU/l4MtRnfmOLo4ctjZ6O0f4pmcaLgv5eichzlO5JODg46LEB5VwGiZZVxN2Hh2FcTaQ7i0duwhYBD8bl7BLZI13Bu/Yv4MwjNBQr/r6++emvcr/036BKIwWaAkAQJBAOrrMANMKg/yHlKoL3zk7btCL0WVUHBZ/Sd3Ef1IlFI75Uvjr7iQHwm/XO9oAauoME0rV8kanE0xHHZ+15WpL6ECQQC3f3KZ7NAr5lRIo1PHHG5Xk9s6iuULI5T1uhFCkuYgrzqyHmPkjxaJzNOsnVachgU0+B1gDmK7ppnIDXXPXEBvAkAS7gq7aUrGaCs7W+Qfu07Q1R98CvElbIrywCyJ7WxOSBdNCzbgt3RY07vIaugfjfj+buyu/t7zdW6mucfjfnOhAkBP3KUY/us/H/iwwHzW3LXdYdl5KjgzV+Id7ERU0DBeK0WFfhqFwAzUHpRFvRiT+PRNMGtAgiJQf1rQqaMLg5/7AkAQixYTAfaXAE58wmIQnHXarQ9wvMQmq1cHbYXkyf3gMh/8DrURaS3sWpeY/N6qbqPCCET0q4n7RgVn4MyzC06N';
@@ -23,8 +24,6 @@ import * as CryptoJS from 'crypto-js';
  * aes对称加密
  *  生成一个key，可以同时用于加密和解密
  *  主要用途：前端用rsa加密后传给后端，后端用key加密数据返回给前端，前端在用此key解密
- *  前端：https://github.com/brix/crypto-js
- *  后端：https://blog.csdn.net/qq_33512843/article/details/80938486
  *  @example
  // const key = Utils.uuid().substr(0, 16); // 动态生成16位长度的key
  const key = 'fa9353c6179dfbfa';
