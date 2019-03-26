@@ -6,7 +6,7 @@ import { Logger } from '../../providers/Logger';
 import { HttpService } from '../../providers/HttpService';
 import { GlobalData } from '../../providers/GlobalData';
 import { Encrypt } from '../../providers/Encrypt';
-import { Events } from '@ionic/angular';
+import { Events, NavController } from '@ionic/angular';
 import { Router } from '@angular/router';
 
 @Component({
@@ -20,6 +20,7 @@ export class Tab1Page {
                 public helper: Helper,
                 public events: Events,
                 public router: Router,
+                public nav: NavController,
                 public http: HttpService) {
         console.log(Utils.dateFormat(new Date(), 'yyyy-MM-ddTHH:mm:ss+08:00'));
         Logger.log(111);
@@ -39,7 +40,8 @@ export class Tab1Page {
 
 
     test() {
-        this.router.navigateByUrl('/tabs/tab1/test', {queryParams: {page: 1, size: 10}});
+        // this.nav.navigateForward('/tabs/tab1/test?page=1&size=10');
+        this.router.navigateByUrl('/tabs/tab1/test?page=1&size=10');
     }
 
     test2() {
