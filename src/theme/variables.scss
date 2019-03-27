@@ -129,13 +129,12 @@ html {
     width: 100%;
     max-width: 100%;
     padding-left: 0;
-    --placeholder-color: #aaa;
-    --placeholder-opacity: 1;
+    --placeholder-color: #000;
+    --placeholder-opacity: 0.33;
   }
-  .select-placeholder {
-    color: red !important;
+  ion-datetime {
+    --placeholder-color: rgba(0, 0, 0, 0.33);
   }
-
   .form-invalid-tip {
     padding: 1px 16px;
     color: $danger-color;
@@ -153,7 +152,6 @@ html {
       margin-right: 2px;
     }
   }
-
   .form-item-content {
     width: 100%;
     margin: 11px 0;
@@ -175,7 +173,7 @@ html {
     .form-textarea-placeholder:before {
       content: '说你想说的...';
       position: absolute;
-      color: #aaa;
+      color: rgba(0, 0, 0, 0.33);
       text-overflow: clip;
     }
     .form-number-step {

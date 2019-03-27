@@ -82,7 +82,8 @@ export class Helper {
      * @param cancelBtnFun 失败回调
      */
     alert(header = '', message = '', okBackFun = null, cancelBtnFun = null): void {
-        if (this.AlertIsExist) { // alertController.create是异步方法，所以使用AlertIsExist标志是否打开
+        // alertController.create是异步方法，所以使用AlertIsExist标志是否打开
+        if (this.AlertIsExist) {
             Logger.log('alert已经存在，禁止重复打开');
             setTimeout(() => { // alert关闭的可能性比较多，不止点击确定或取消按钮
                 this.AlertIsExist = false;
@@ -136,13 +137,12 @@ export class Helper {
             duration: environment.requestTimeout,
             message
         }).then(loading => {
-            /**
-             * loadingController.create异步方法，调用loading.present()前有可能已经调用hideLoading方法
-             * 所以，如果this.LoadingIsExist===false则不打开
-             */
+            // loadingController.create异步方法，调用loading.present()前有可能已经调用hideLoading方法
             if (this.LoadingIsExist) {
                 loading.present();
                 this.Loading = loading;
+            } else {
+                loading.dismiss();
             }
         });
     }
