@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Utils } from '../../providers/Utils';
 import { NativeService } from '../../providers/NativeService';
 import { Helper } from '../../providers/Helper';
@@ -9,12 +9,14 @@ import { Encrypt } from '../../providers/Encrypt';
 import { Events, NavController } from '@ionic/angular';
 import { Router } from '@angular/router';
 
+declare var AlloyLever;
+
 @Component({
     selector: 'app-tab1',
     templateUrl: 'tab1.page.html',
     styleUrls: ['tab1.page.scss']
 })
-export class Tab1Page {
+export class Tab1Page implements OnInit {
 
     constructor(public native: NativeService,
                 public helper: Helper,
@@ -26,6 +28,18 @@ export class Tab1Page {
         Logger.log(111);
     }
 
+    ngOnInit() {
+        AlloyLever.config({
+            cdn: '//s.url.cn/qqun/qun/qqweb/m/qun/confession/js/vconsole.min.js',
+            reportUrl: '//a.qq.com',
+            reportPrefix: 'qun',
+            reportKey: 'msg',
+            otherReport: {
+                uin: 491862102
+            },
+            entry: '#entry'
+        });
+    }
 
     post() {
         this.http.post('/v1/login', {
